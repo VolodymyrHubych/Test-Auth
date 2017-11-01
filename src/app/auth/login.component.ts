@@ -10,50 +10,34 @@ import { AuthService } from '../services/auth.service';
 })
     
 export class LoginComponent implements OnInit {
-    loginForm: FormGroup;
-    userName: FormControl;
-    password: FormControl;
-    loginFailed: boolean = false;
+   
+   
 
-
-    loginUserName: string;
-    loginPassword: string;
+    model = {
+        loginUserName: '',
+       loginPassword: ''
+    }
+    
 
 
     constructor(public authService: AuthService, public router: Router) {
 
     }
 
-  ngOnInit() {
-    this.loginUserName = 'User Name' ;
-    this.loginPassword =  'Password' ;
-
-      this.userName = new FormControl('', Validators.required);
-      this.password = new FormControl('', Validators.required);
-
-      this.loginForm = new FormGroup({
-          userName: this.userName,
-          password: this.password
-      });
-      
-     
+  ngOnInit() {  
 
   }
 
   login() {
-    this.authService.login(this.userName.value, this.password.value).subscribe(() => {
+    this.authService.login(this.model.loginUserName, this.model.loginPassword).subscribe(() => {
       if (this.authService.isAuthenticated) {
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : 'home';
         this.router.navigate([redirect]);
       } else{
-          this.userName.setValue('');
-          this.password.setValue('');
+          alert('Fail')
       }
       
     });
   }
 
-  logout() {
-    this.authService.logout();
-  }
 }

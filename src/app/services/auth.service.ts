@@ -24,6 +24,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
+
     let body = `grant_type=password&username=${username}&password=${password}`;
     return this.http.post(this.tokenEndpoint, body, {headers : headers}).map(res => {
       var response = res.json();
@@ -44,6 +45,7 @@ export class AuthService {
   logout(): void {
         this.isAuthenticated = false;
         localStorage.removeItem('token');        
+         this.router.navigate(['login'])
   }
 
   refreshToken() {
@@ -82,7 +84,7 @@ export class AuthService {
   }
 
   isExpired(token:any) {
-     if (token === null || !token || !token.expireDate) {
+     if (token === null || !token || !token.exp) {
         this.logout();
         return undefined;
     }
