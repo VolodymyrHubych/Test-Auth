@@ -16,7 +16,17 @@ export class AuthService {
   public redirectUrl : string;
 
   constructor(private router: Router, private http: Http) { 
-     this.isAuthenticated = JSON.parse(localStorage.getItem('token'));
+     this.isAuthenticated = this.parseToken(localStorage.getItem('token'));
+  }
+
+  parseToken(token:any) {
+    let parsedToken;
+    try {
+      parsedToken = JSON.parse(token);
+    } catch(e) {
+       parsedToken =  null; 
+    }
+      return parsedToken;
   }
    
 
@@ -45,11 +55,11 @@ export class AuthService {
   logout(): void {
         this.isAuthenticated = false;
         localStorage.removeItem('token');        
-         this.router.navigate(['login'])
+         this.router.navigate(['home'])
   }
 
   refreshToken() {
-    let refToken = JSON.parse(localStorage.getItem('token')).refresh;
+    let refToken = this.parseToken(localStorage.getItem('token')).refresh;
     if (refToken) {
       let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
       let options = new RequestOptions({ headers: headers });
@@ -66,8 +76,9 @@ export class AuthService {
          this.setToken(response);    
          this.isAuthenticated = true;      
       }, (error) => {
-        this.router.navigate(['login'])
         this.logout();
+        this.router.navigate(['home'])
+        
       });
     }
   }
@@ -99,7 +110,7 @@ export class AuthService {
   }
 
   getToken() {
-     return this.isExpired(JSON.parse(localStorage.getItem('token')));
+     return this.isExpired(this.parseToken(localStorage.getItem('token')));
   }
 
   sign(user : User) {

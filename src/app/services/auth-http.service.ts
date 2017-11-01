@@ -11,7 +11,7 @@ export class AuthHttpService {
 
    createHeaders(): any {
        let headers = new Headers();
-       headers.append('Authorization', 'Bearer ' + JSON.parse(localStorage.getItem('token')).token);
+       headers.append('Authorization', 'Bearer ' + this.authService.getToken().token);
        return headers;
     }
 

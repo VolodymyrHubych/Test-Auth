@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import {HomeComponent} from './home/home.component'
+import {ProductsComponent} from './products/products.component'
 import {
     Resolve,
     ActivatedRouteSnapshot,
@@ -14,13 +15,16 @@ import { AuthGuard } from './services/auth-guard.service';
 export const routes: Routes = [
      {
       path:'',
-      component: HomeComponent, 
+      component: HomeComponent
+    },
+    {
+      path:'products',
+      component: ProductsComponent, 
       canActivate: [AuthGuard]
     },
     {
         path:"**",
-         component: HomeComponent, 
-      canActivate: [AuthGuard]
+         redirectTo: ''
     }
    
 

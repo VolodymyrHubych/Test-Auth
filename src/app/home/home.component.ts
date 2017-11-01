@@ -9,9 +9,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public authService: AuthService) { }
 
-  logout() {
-    this.authService.logout();
-  }
+  
   ngOnInit() {
   }
 

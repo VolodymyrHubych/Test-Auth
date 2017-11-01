@@ -1,0 +1,22 @@
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" (ngSubmit)="f.form.valid && onNoClick()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.loginUserName" #username="ngModel" required />
+            <div *ngIf=" !username.valid && f.submitted" class="help-block">Username is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.loginPassword" #password="ngModel" required />
+            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div mat-dialog-actions>
+                    <button mat-button [mat-dialog-close]="model" tabindex="2">Ok</button>
+                    <button mat-button (click)="onNoClick()" tabindex="-1">Close</button>
+            </div>
+
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </form>
+</div>

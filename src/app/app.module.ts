@@ -2,19 +2,30 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login.component';
-import { LoginRoutingModule } from './auth/login-routing.module';
+import { LoginComponent , LoginDialog} from './auth/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import {MatButtonModule, MatCardModule} from '@angular/material';
 
+import { MatDialogModule} from '@angular/material';
+import {AuthGuard} from './services/auth-guard.service'
+import {AuthService} from './services/auth.service';
 
-
+import {
+    Resolve,
+    ActivatedRouteSnapshot,
+    RouterStateSnapshot,
+    Routes,
+    RouterModule,
+    PreloadAllModules
+} from '@angular/router';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -22,20 +33,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     HomeComponent,
-
-
+    LoginDialog,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
-    LoginRoutingModule,
+    RouterModule,
     AppRoutingModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    
+    MatButtonModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatDialogModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthService,AuthGuard],
+  bootstrap: [AppComponent],
+   entryComponents: [LoginDialog]
 })
 export class AppModule { }
