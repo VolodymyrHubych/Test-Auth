@@ -120,7 +120,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.css$/,
         "use": [
@@ -143,7 +143,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -174,7 +174,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.less$/,
         "use": [
@@ -203,7 +203,7 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.styl$/,
         "use": [
@@ -233,7 +233,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.css$/,
         "use": [
@@ -256,7 +256,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.scss$|\.sass$/,
         "use": [
@@ -287,7 +287,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.less$/,
         "use": [
@@ -316,7 +316,7 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src\\styles.css")
+          path.join(process.cwd(), "src\\styles.less")
         ],
         "test": /\.styl$/,
         "use": [

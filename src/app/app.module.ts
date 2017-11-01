@@ -11,11 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatButtonModule, MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialog, MatNativeDateModule} from '@angular/material';
 
 import { MatDialogModule} from '@angular/material';
 import {AuthGuard} from './services/auth-guard.service'
 import {AuthService} from './services/auth.service';
+
 
 import {
     Resolve,
@@ -28,13 +29,19 @@ import {
 import { ProductsComponent } from './products/products.component';
 
 
+
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     LoginDialog,
-    ProductsComponent
+    ProductsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,11 @@ import { ProductsComponent } from './products/products.component';
     MatButtonModule,
     MatCardModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+
+   
+    MatNativeDateModule,
+   
   ],
   providers: [AuthService,AuthGuard],
   bootstrap: [AppComponent],
