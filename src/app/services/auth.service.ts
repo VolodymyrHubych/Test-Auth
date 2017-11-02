@@ -38,9 +38,14 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });
 
     let body = `grant_type=password&username=${username}&password=${password}`;
+<<<<<<< HEAD
     return this.http.post(this.tokenEndpoint, body, options).map(res => {
       var response = res.json();
       console.log(response);
+=======
+    return this.http.post(this.tokenEndpoint, body,options).map(res => {
+      let response = res.json();
+>>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
       if (response.error)
       {
           throw Observable.throw(response.error_description);
@@ -58,9 +63,9 @@ export class AuthService {
   }
 
   logout(): void {
-        this.isAuthenticated = false;
-        localStorage.removeItem('token');        
-         this.router.navigate(['home'])
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');        
+    this.router.navigate([''])
   }
 
   refreshToken() {
@@ -70,13 +75,12 @@ export class AuthService {
       let options = new RequestOptions({ headers: headers });
       let body = `grant_type=refresh_token&refresh_token=${refToken}`;
        this.http.post(this.tokenEndpoint, body, options).map(res => {
-        var response = res.json();
+        let response = res.json();
         if (response.error)
         {
             throw Observable.throw(response.error_description);  
         }
-         
-         return res.json();
+        return res.json();
       }).subscribe( (response) => {
          this.setToken(response);    
          this.isAuthenticated = true;      
@@ -84,7 +88,7 @@ export class AuthService {
            (error) => {
           console.log(error);
         this.logout();
-        this.router.navigate(['home'])
+        this.router.navigate([''])
         
       });
     }
@@ -106,7 +110,11 @@ export class AuthService {
         this.logout();
         return undefined;
     }
+<<<<<<< HEAD
     let expires = new Date(token.exp);
+=======
+    let expires = new Date(token.expireDate);
+>>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
     let now = new Date();
     if (expires < now) {
         console.log("token is expired!");

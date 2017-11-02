@@ -11,12 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {MatButtonModule, MatCardModule, MatDialog, MatNativeDateModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialog, MatNativeDateModule, MatInputModule, MatFormFieldModule} from '@angular/material';
 
 import { MatDialogModule} from '@angular/material';
 import {AuthGuard} from './services/auth-guard.service'
 import {AuthService} from './services/auth.service';
-
+import {ToasterModule, ToasterService} from 'angular2-toaster';
 
 import {
     Resolve,
@@ -32,10 +32,6 @@ import { FooterComponent } from './footer/footer.component';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +44,7 @@ import { FooterComponent } from './footer/footer.component';
 
   ],
   imports: [
+    ToasterModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
@@ -60,11 +57,11 @@ import { FooterComponent } from './footer/footer.component';
     FlexLayoutModule,
     MatDialogModule,
 
-   
+   MatInputModule,
     MatNativeDateModule,
-   
+   MatFormFieldModule
   ],
-  providers: [AuthService,AuthGuard],
+  providers: [AuthService,AuthGuard,ToasterService],
   bootstrap: [AppComponent],
    entryComponents: [LoginDialog]
 })
