@@ -1,5 +1,6 @@
-
-   <button mat-button color="primary" (click)="openDialog()">Hi. Login?</button>
-
+<!--<div fxLayoutAlign="end stretch">-->
+   <button id="log-in" *ngIf="!authService.isAuthenticated" mat-button color="primary" (click)="openDialog()" >Hi. Login</button>
+   <button id="log-out" *ngIf="authService.isAuthenticated"mat-button color="primary" (click)="openDialog()">Hi. Logout</button>
+<!--</div>-->
 
     

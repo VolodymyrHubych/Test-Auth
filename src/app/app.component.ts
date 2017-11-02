@@ -7,7 +7,7 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'app';
+
 constructor(public authService: AuthService) { }
   logout() {
     this.authService.logout();

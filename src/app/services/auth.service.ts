@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { environment } from '../../environments/environment';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import {User} from '../models/user'
 import { Router} from "@angular/router";
 
@@ -10,9 +10,10 @@ import { Router} from "@angular/router";
 export class AuthService {
 
   isAuthenticated: boolean = false;
+
   private tokenEndpoint = environment.token_endpoint;
-  private Url = environment.Url
- 
+  private Url = environment.Url;
+  public  username;
   public redirectUrl : string;
 
   constructor(private router: Router, private http: Http) { 
@@ -24,6 +25,7 @@ export class AuthService {
     try {
       parsedToken = JSON.parse(token);
     } catch(e) {
+        console.log(e);
        parsedToken =  null; 
     }
       return parsedToken;
@@ -36,17 +38,20 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });
 
     let body = `grant_type=password&username=${username}&password=${password}`;
-    return this.http.post(this.tokenEndpoint, body, {headers : headers}).map(res => {
+    return this.http.post(this.tokenEndpoint, body, options).map(res => {
       var response = res.json();
+      console.log(response);
       if (response.error)
       {
-          throw Observable.throw(response.error_description);  
+          throw Observable.throw(response.error_description);
       }
        this.setToken(response);       
-       this.isAuthenticated = true;      
+       this.isAuthenticated = true;
+       this.username=username;
        return true;
     })
     .catch(er => {
+        console.log(er);
         this.logout();
         return Observable.of(false);
       });
@@ -75,7 +80,9 @@ export class AuthService {
       }).subscribe( (response) => {
          this.setToken(response);    
          this.isAuthenticated = true;      
-      }, (error) => {
+      },
+           (error) => {
+          console.log(error);
         this.logout();
         this.router.navigate(['home'])
         
@@ -99,9 +106,10 @@ export class AuthService {
         this.logout();
         return undefined;
     }
-    var expires = new Date(token.expireDate);
-    var now = new Date();
+    let expires = new Date(token.exp);
+    let now = new Date();
     if (expires < now) {
+        console.log("token is expired!");
         this.logout();
         return undefined;
     }

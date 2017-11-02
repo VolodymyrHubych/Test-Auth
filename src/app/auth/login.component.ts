@@ -12,11 +12,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
     
 export class LoginComponent implements OnInit {
-   
-   
-
-    
-
 
     constructor( public authService: AuthService,public router: Router, public dialog: MatDialog) {
 
@@ -60,8 +55,8 @@ export class LoginComponent implements OnInit {
 })
 export class LoginDialog {
   model = {
-        loginUserName: '',
-       loginPassword: ''
+      loginUserName: '',
+      loginPassword: ''
     }
     
   constructor(

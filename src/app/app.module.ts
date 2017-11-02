@@ -27,6 +27,8 @@ import {
     PreloadAllModules
 } from '@angular/router';
 import { ProductsComponent } from './products/products.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -41,6 +43,8 @@ import { ProductsComponent } from './products/products.component';
     HomeComponent,
     LoginDialog,
     ProductsComponent,
+    HeaderComponent,
+    FooterComponent,
 
   ],
   imports: [
