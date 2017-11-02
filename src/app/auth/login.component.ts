@@ -47,11 +47,11 @@ export class LoginComponent implements OnInit {
   
 
 }
-
+//kl4thlv
 @Component({
   selector: 'login-dialog',
   templateUrl: 'login-dialog.html',
-   styleUrls: ['./login.component.less']
+    styleUrls: ['./login.component.less']
 })
 export class LoginDialog {
   model = {
