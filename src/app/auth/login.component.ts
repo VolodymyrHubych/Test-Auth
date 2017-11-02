@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
    openDialog(): void {
     let dialogRef = this.dialog.open(LoginDialog, {
       width: "250px",
-      height:'300px'
+      height:"300px"
     });
   }
 }
