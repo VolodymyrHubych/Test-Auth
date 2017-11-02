@@ -30,10 +30,6 @@ import { ProductsComponent } from './products/products.component';
 
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

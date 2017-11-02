@@ -53,9 +53,9 @@ export class AuthService {
   }
 
   logout(): void {
-        this.isAuthenticated = false;
-        localStorage.removeItem('token');        
-         this.router.navigate(['home'])
+    this.isAuthenticated = false;
+    localStorage.removeItem('token');        
+    this.router.navigate([''])
   }
 
   refreshToken() {
@@ -70,14 +70,13 @@ export class AuthService {
         {
             throw Observable.throw(response.error_description);  
         }
-         
-         return res.json();
+        return res.json();
       }).subscribe( (response) => {
          this.setToken(response);    
          this.isAuthenticated = true;      
       }, (error) => {
         this.logout();
-        this.router.navigate(['home'])
+        this.router.navigate([''])
         
       });
     }
