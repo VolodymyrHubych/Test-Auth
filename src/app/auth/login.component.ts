@@ -11,50 +11,37 @@ import { ToasterService} from 'angular2-toaster';
 })
     
 export class LoginComponent implements OnInit {
-<<<<<<< HEAD
-
-    constructor( public authService: AuthService,public router: Router, public dialog: MatDialog) {
-=======
   
-  constructor(  public dialog: MatDialog) {
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
+  constructor(  public dialog: MatDialog, public authService : AuthService) {
 
   }
 
   ngOnInit() {
 
   }
+    logout() {
+        this.authService.logout();
+    }
 
    openDialog(): void {
     let dialogRef = this.dialog.open(LoginDialog, {
-      width: '250px',
+      width: "250px",
       height:'300px'
     });
   }
 }
-<<<<<<< HEAD
-//kl4thlv
-=======
 
 
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
 @Component({
   selector: 'login-dialog',
   templateUrl: 'login-dialog.html',
-    styleUrls: ['./login.component.less']
+   styleUrls: ['./login.component.less']
 })
 export class LoginDialog {
-<<<<<<< HEAD
-  model = {
-      loginUserName: '',
-      loginPassword: ''
-    }
-=======
 
   loginForm: FormGroup;
   userName: FormControl;
   password: FormControl;     
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
     
   constructor(
     public authService: AuthService, public router: Router, public toast: ToasterService,
@@ -88,7 +75,6 @@ export class LoginDialog {
       }      
     });
   }
-  
 
 }
 

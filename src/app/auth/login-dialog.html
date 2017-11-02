@@ -1,47 +1,27 @@
-
-          
-           
-       
-
- <toaster-container></toaster-container>
-<div >
+<toaster-container></toaster-container>
+<div>
     <h2>Login</h2>
-<<<<<<< HEAD
-    <form name="form" (ngSubmit)="f.form.valid && onNoClick()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="model.loginUserName" #username="ngModel" required />
-            <div *ngIf=" !username.valid && f.submitted" class="help-block">Username is required</div>
-        </div>
-        <br>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.loginPassword" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <br>
-        <div mat-dialog-actions>
-                    <button mat-button [mat-dialog-close]="model" tabindex="2">Ok</button>
-                    <button mat-button (click)="onNoClick()" tabindex="-1">Close</button>
-            </div>
-=======
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
-
         <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
-                <mat-input-container fxLayout="row" dividerColor="{{userName.invalid && userName.dirty ? 'accent' : 'primary'}}">
-                    <input matInput formControlName="userName" type="text" [placeholder]="Login" />
-                    <mat-hint state="admin" align="end" *ngIf="userName.invalid && userName.dirty || (userName.invalid && mouseoverLogin)">Required</mat-hint>
-                </mat-input-container>
-                <mat-input-container fxLayout="row" dividerColor="{{password.invalid && password.dirty ? 'accent' : 'primary'}}">
-                    <input matInput formControlName="password" type="password" [placeholder]="Password" />
-                    <mat-hint state="admin"  align="end" *ngIf="password.invalid && password.dirty || (password.invalid && mouseoverLogin)">Required</mat-hint>
-                </mat-input-container>
-                <span fxLayout="row" fxLayoutAlign="space-between">
-                    <button mat-raised-button class="mat-primary" type="submit" [disabled]="loginForm.invalid" >
-                        <span state="admin" >Login</span>
+            <mat-input-container fxLayout="row"
+                                 dividerColor="{{userName.invalid && userName.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="userName" type="text" [placeholder]="Login"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="userName.invalid && userName.dirty || (userName.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+            <mat-input-container fxLayout="row"
+                                 dividerColor="{{password.invalid && password.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="password" type="password" [placeholder]="Password"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="password.invalid && password.dirty || (password.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+            <span fxLayout="row" fxLayoutAlign="space-between">
+                    <button mat-raised-button class="mat-primary" type="submit" [disabled]="loginForm.invalid">
+                        <span state="admin">Login</span>
                     </button>
-                     <button type=button mat-raised-button class="mat-warn" (click)="onNoClick()" >Close</button>
-                </span>            
-        </form>  
+                     <button type=button mat-raised-button class="mat-warn" (click)="onNoClick()">Close</button>
+                </span>
+        </form>
 </div>
 

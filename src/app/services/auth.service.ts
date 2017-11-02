@@ -38,14 +38,11 @@ export class AuthService {
     let options = new RequestOptions({ headers: headers });
 
     let body = `grant_type=password&username=${username}&password=${password}`;
-<<<<<<< HEAD
+
     return this.http.post(this.tokenEndpoint, body, options).map(res => {
       var response = res.json();
       console.log(response);
-=======
-    return this.http.post(this.tokenEndpoint, body,options).map(res => {
-      let response = res.json();
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
+
       if (response.error)
       {
           throw Observable.throw(response.error_description);
@@ -110,11 +107,9 @@ export class AuthService {
         this.logout();
         return undefined;
     }
-<<<<<<< HEAD
+
     let expires = new Date(token.exp);
-=======
-    let expires = new Date(token.expireDate);
->>>>>>> cb90a60f209b8072f19d2a903580589d3e352950
+
     let now = new Date();
     if (expires < now) {
         console.log("token is expired!");
