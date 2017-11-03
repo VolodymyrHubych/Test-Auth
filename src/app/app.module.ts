@@ -29,7 +29,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignDialogComponent } from './dialogs/sign-dialog/sign-dialog.component';
 import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
-import { SearchComponentComponent } from './home/search-component/search-component.component';
+import { SearchComponent } from './home/search/search.component';
+import { InfoComponent } from './home/info/info.component';
+
 
 import 'hammerjs';
 
@@ -44,7 +46,8 @@ import 'hammerjs';
     FooterComponent,
     SignDialogComponent,
     LoginDialogComponent,
-    SearchComponentComponent,
+    SearchComponent,
+    InfoComponent
 
   ],
   imports: [
