@@ -1,0 +1,15 @@
+
+<mat-card fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between" class="search">
+  <mat-form-field  id="category" fxFlex="20%" fxFlexAlign="center">
+    <mat-select  placeholder="Category"  [(ngModel)]="selectedValue">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+ </mat-form-field >
+  <mat-form-field  id="searchText" fxFlex="50%" fxFlex.md="35%" fxFlex.lg="40%" fxFlexAlign="center">
+    <input matInput placeholder="What are you looking for?" [(ngModel)]="searchText">
+  </mat-form-field>
+
+  <button    fxFlexAlign="center stretch"   fxFlex.md="25%" fxFlex.lg="20%" fxFlex="15%" mat-raised-button class="mat-primary searchButton"  mat-button color="primary" (click)="search()" >SEARCH</button>
+</mat-card>

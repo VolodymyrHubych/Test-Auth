@@ -1,0 +1,51 @@
+<toaster-container></toaster-container>
+<div>
+    <h2>Sign</h2>
+        <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="sign()">
+            <mat-input-container fxLayout="row"
+                                 dividerColor="{{userName.invalid && userName.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="userName" type="text" [placeholder]="Login"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="userName.invalid && userName.dirty || (userName.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+            <mat-input-container fxLayout="row"
+                                 dividerColor="{{password.invalid && password.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="password" type="password" [placeholder]="Password"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="password.invalid && password.dirty || (password.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+           
+              <mat-input-container fxLayout="row"
+                                 dividerColor="{{confirm.invalid && confirm.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="confirm" type="password" [placeholder]="Confirm"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="confirm.invalid && confirm.dirty || (confirm.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+             <mat-input-container fxLayout="row"
+                                 dividerColor="{{lastName.invalid && lastName.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="lastName" type="text" [placeholder]="Last + Name"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="lastName.invalid && lastName.dirty || (lastName.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+             <mat-input-container fxLayout="row"
+                                 dividerColor="{{firstName.invalid && firstName.dirty ? 'accent' : 'primary'}}">
+                <input matInput formControlName="firstName" type="text" [placeholder]="First + Name"/>
+                <mat-hint state="admin" align="end"
+                          *ngIf="firstName.invalid && firstName.dirty || (firstName.invalid && mouseoverLogin)">Required
+                </mat-hint>
+            </mat-input-container>
+
+
+            <span fxLayout="row" fxLayoutAlign="space-between">
+                    <button mat-raised-button class="mat-primary" type="submit" [disabled]="loginForm.invalid">
+                        <span state="admin">Login</span>
+                    </button>
+                     <button type=button mat-raised-button class="mat-warn" (click)="onNoClick()">Back</button>
+                </span>
+        </form>
+</div>
+
