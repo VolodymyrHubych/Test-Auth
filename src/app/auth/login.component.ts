@@ -11,9 +11,9 @@ import { ToasterService} from 'angular2-toaster';
 })
     
 export class LoginComponent implements OnInit {
-  
+  public username;
   constructor(  public dialog: MatDialog, public authService : AuthService) {
-
+    this.username = authService.username;
   }
 
   ngOnInit() {

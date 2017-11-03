@@ -13,10 +13,10 @@ export class AuthService {
 
   private tokenEndpoint = environment.token_endpoint;
   private Url = environment.Url;
-  public  username;
+  public  username ;
   public redirectUrl : string;
 
-  constructor(private router: Router, private http: Http) { 
+  constructor(private router: Router, private http: Http) {
      this.isAuthenticated = this.parseToken(localStorage.getItem('token'));
   }
 
@@ -26,7 +26,7 @@ export class AuthService {
       parsedToken = JSON.parse(token);
     } catch(e) {
         console.log(e);
-       parsedToken =  null; 
+       parsedToken =  false;
     }
       return parsedToken;
   }
@@ -36,11 +36,9 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options = new RequestOptions({ headers: headers });
-
     let body = `grant_type=password&username=${username}&password=${password}`;
-
     return this.http.post(this.tokenEndpoint, body, options).map(res => {
-      var response = res.json();
+      let response = res.json();
       console.log(response);
 
       if (response.error)
@@ -73,6 +71,7 @@ export class AuthService {
       let body = `grant_type=refresh_token&refresh_token=${refToken}`;
        this.http.post(this.tokenEndpoint, body, options).map(res => {
         let response = res.json();
+        console.log(response);
         if (response.error)
         {
             throw Observable.throw(response.error_description);  

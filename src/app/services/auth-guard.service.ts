@@ -6,6 +6,7 @@ import {AuthService} from '../services/auth.service'
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+    public username;
     constructor(private authService: AuthService, private router: Router) {
     }
 
@@ -18,6 +19,8 @@ export class AuthGuard implements CanActivate {
 
 
         if (this.authService.getToken()) {
+            console.log(this.authService.username)
+            this.username = this.authService.username;
             return true;
         }
         this.authService.redirectUrl = url;
